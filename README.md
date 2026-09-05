@@ -151,6 +151,16 @@ curl -X POST http://localhost:8000/api/demo/load
 
 ---
 
+## ☁️ Cloud Production Deployment
+
+Deploy CASHpilot AI in **under 5 minutes** for **100% free**:
+* **Backend + PostgreSQL Database**: Hosted on **Render** (via included `render.yaml` blueprint).
+* **Frontend**: Hosted on **Vercel** with global edge CDN.
+
+👉 **See the complete step-by-step [Production Deployment Guide](DEPLOYMENT.md).**
+
+---
+
 ## 🧪 Automated Testing & Verification
 
 CASHpilot includes a comprehensive test suite covering all phases of reconciliation, financial formulas, exception triage, and forward forecasting:

@@ -57,17 +57,23 @@ app = FastAPI(
 )
 
 # ---------------------------------------------------------------------------
-# CORS — allow the Next.js dev server and any configured frontend
+# CORS — allow the Next.js dev server, Vercel deployments, and configured frontend
 # ---------------------------------------------------------------------------
-ALLOWED_ORIGINS = [
+raw_origins = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    os.getenv("FRONTEND_URL", "http://localhost:3000"),
 ]
+frontend_url = os.getenv("FRONTEND_URL", "")
+if frontend_url:
+    for url in frontend_url.split(","):
+        clean = url.strip()
+        if clean and clean not in raw_origins:
+            raw_origins.append(clean)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=ALLOWED_ORIGINS,
+    allow_origins=raw_origins,
+    allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
