@@ -195,13 +195,6 @@ All financial values are stored as **BIGINT (paise)** where ₹1.00 = 100 paise:
 
 ---
 
-## 🎥 Video Demonstration & Pitch
-
-A complete, timestamped walkthrough script designed for hackathon judges is available in the repository:
-* 📄 **[Video Demonstration Script](video_demo_script.md)**
-
----
-
 ## ⚖️ License
 
 Distributed under the MIT License. See `LICENSE` for more information.
