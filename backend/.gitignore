@@ -1,0 +1,17 @@
+# Backend environment variables & secrets
+.env
+.env.*
+*.env
+!.env.example
+
+# Python cache & build
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+venv/
+.venv/
+env/
+*.log

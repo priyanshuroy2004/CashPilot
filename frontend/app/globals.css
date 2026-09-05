@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --rzp-blue: #0c5adb;
+  --rzp-blue-hover: #0944a8;
+  --rzp-navy: #0c2340;
+  --rzp-navy-dark: #08162b;
+  --rzp-green: #00b574;
+  --rzp-border: #e2e8f0;
+  --rzp-card: #ffffff;
+  --rzp-muted: #64748b;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* ─── Razorpay Clean Financial Canvas ───────────────────────────────────────── */
+body {
+  background-color: #f8fafc;
+  background-image: 
+    radial-gradient(ellipse 70% 40% at 50% -10%, rgba(12, 90, 219, 0.05), transparent 60%),
+    radial-gradient(ellipse 60% 30% at 85% 10%, rgba(0, 181, 116, 0.04), transparent 50%);
+  background-attachment: fixed;
+  color: #0f172a;
+  min-height: 100vh;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Monospace Tabular Figures for Financial Precision ──────────────────── */
+.tabular-nums, .font-mono {
+  font-variant-numeric: tabular-nums lining-nums;
+  letter-spacing: -0.01em;
+}
+
+/* ─── Custom Clean Minimal Scrollbars ─────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ─── Razorpay Surface Cards & Elevation Utilities ────────────────────────── */
+.glass-panel, .rzp-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
+  border-radius: 1rem;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.glass-panel:hover, .rzp-card:hover {
+  box-shadow: 0 4px 12px -2px rgba(12, 90, 219, 0.06), 0 2px 6px -2px rgba(0, 0, 0, 0.04);
+}
+
+.glass-panel-elevated, .rzp-card-elevated {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+  border-radius: 1.25rem;
+}
+
+.glass-panel-subtle {
+  background-color: #f8fafc;
+  border: 1px solid #edf2f7;
+  border-radius: 0.875rem;
+}
+
+/* High-impact Razorpay Executive / Banner Container */
+.rzp-navy-card {
+  background-color: #0c2340;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  box-shadow: 0 12px 30px -8px rgba(12, 35, 64, 0.25);
+  border-radius: 1.25rem;
+}
+
+/* ─── Pulsing Glow Accents ───────────────────────────────────────────────── */
+@keyframes softPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.96);
+  }
+}
+
+.animate-soft-pulse {
+  animation: softPulse 2.5s ease-in-out infinite;
+}
+
+/* ─── React Flow Canvas Overrides ─────────────────────────────────────────── */
+.react-flow__controls {
+  background-color: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.08) !important;
+}
+
+.react-flow__controls-button {
+  background-color: #ffffff !important;
+  border: none !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+  color: #475569 !important;
+  fill: #475569 !important;
+  width: 32px !important;
+  height: 32px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease-in-out !important;
+}
+
+.react-flow__controls-button:hover {
+  background-color: #f8fafc !important;
+  color: #0c5adb !important;
+  fill: #0c5adb !important;
+}
+
+.react-flow__controls-button:active {
+  background-color: #f1f5f9 !important;
+}
+
+.react-flow__controls-button:last-child {
+  border-bottom: none !important;
+}
+
+.react-flow__controls-button svg {
+  fill: currentColor !important;
+  width: 14px !important;
+  height: 14px !important;
+  max-width: 14px !important;
+  max-height: 14px !important;
+}
+
+.react-flow__controls-button:disabled {
+  opacity: 0.35 !important;
+  cursor: not-allowed !important;
+}
