@@ -13,6 +13,10 @@ DATABASE_URL = os.getenv(
     "postgresql://cashpilot:cashpilot_dev_password@localhost:5432/cashpilot"
 )
 
+# Render and other cloud databases often supply postgres:// which SQLAlchemy 1.4+ rejects
+if DATABASE_URL and DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+
 engine = create_engine(
     DATABASE_URL,
     pool_pre_ping=True,         # verify connections before checkout
