@@ -12,6 +12,18 @@
 
 ---
 
+## 🌐 Live Production Deployment
+
+| Service | Status | Live URL |
+| :--- | :---: | :--- |
+| **Backend API** | ![Live](https://img.shields.io/badge/Status-Live-00B574?style=flat-square) | [https://cashpilot-backend-j3d9.onrender.com](https://cashpilot-backend-j3d9.onrender.com) |
+| **API Docs (Swagger)** | ![Interactive](https://img.shields.io/badge/Docs-Swagger%20UI-0C5ADB?style=flat-square) | [https://cashpilot-backend-j3d9.onrender.com/docs](https://cashpilot-backend-j3d9.onrender.com/docs) |
+| **API Health Check** | ![Health](https://img.shields.io/badge/Health-200%20OK-00B574?style=flat-square) | [https://cashpilot-backend-j3d9.onrender.com/api/health](https://cashpilot-backend-j3d9.onrender.com/api/health) |
+| **Frontend Web App** | ![Vercel](https://img.shields.io/badge/Vercel-Hosted-black?style=flat-square&logo=vercel) | *Deployed via Vercel* |
+
+
+---
+
 ## 📌 Executive Summary
 
 High-volume digital merchants face continuous, silent **revenue leakage**:
@@ -153,11 +165,15 @@ curl -X POST http://localhost:8000/api/demo/load
 
 ## ☁️ Cloud Production Deployment
 
-Deploy CASHpilot AI in **under 5 minutes** for **100% free**:
-* **Backend + PostgreSQL Database**: Hosted on **Render** (via included `render.yaml` blueprint).
-* **Frontend**: Hosted on **Vercel** with global edge CDN.
+CASHpilot AI is deployed on cloud infrastructure:
+* **Backend + PostgreSQL**: Hosted on **Render** (Oregon)
+  * Base API: [`https://cashpilot-backend-j3d9.onrender.com`](https://cashpilot-backend-j3d9.onrender.com)
+  * Interactive Swagger Docs: [`https://cashpilot-backend-j3d9.onrender.com/docs`](https://cashpilot-backend-j3d9.onrender.com/docs)
+  * Health Endpoint: [`https://cashpilot-backend-j3d9.onrender.com/api/health`](https://cashpilot-backend-j3d9.onrender.com/api/health)
+* **Frontend UI**: Hosted on **Vercel** with global edge network.
 
 👉 **See the complete step-by-step [Production Deployment Guide](DEPLOYMENT.md).**
+
 
 ---
 
