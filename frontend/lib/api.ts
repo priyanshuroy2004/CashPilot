@@ -69,6 +69,12 @@ export async function loadDemoData(): Promise<DemoLoadResponse> {
   return apiFetch<DemoLoadResponse>("/api/demo/load", { method: "POST" });
 }
 
+/** POST /api/demo/clear — clear all data to reset database */
+export async function clearDemoData(): Promise<{ success: boolean; message: string }> {
+  return apiFetch<{ success: boolean; message: string }>("/api/demo/clear", { method: "POST" });
+}
+
+
 /** GET /api/demo/status — current table row counts */
 export async function getDemoStatus(): Promise<DemoStatusResponse> {
   return apiFetch<DemoStatusResponse>("/api/demo/status");

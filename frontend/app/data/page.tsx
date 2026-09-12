@@ -1,10 +1,12 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { loadDemoData, uploadFiles } from "@/lib/api";
+import Link from "next/link";
+import { loadDemoData, clearDemoData, uploadFiles } from "@/lib/api";
 import type { DemoLoadResponse, FileUploadResult } from "@/types";
 import FileDropzone from "@/components/FileDropzone";
 import ValidationCard from "@/components/ValidationCard";
+
 
 // ── Types ────────────────────────────────────────────────────────────────────
 type Tab = "demo" | "upload";
@@ -50,11 +52,14 @@ function DemoTab() {
   const [loadState, setLoadState] = useState<LoadState>("idle");
   const [result, setResult]       = useState<DemoLoadResponse | null>(null);
   const [error, setError]         = useState<string | null>(null);
+  const [clearing, setClearing]   = useState(false);
+  const [clearMsg, setClearMsg]   = useState<string | null>(null);
 
   async function handleLoad() {
     setLoadState("loading");
     setError(null);
     setResult(null);
+    setClearMsg(null);
     try {
       const data = await loadDemoData();
       setResult(data);
@@ -62,6 +67,24 @@ function DemoTab() {
     } catch (err: unknown) {
       setLoadState("error");
       setError(err instanceof Error ? err.message : "Unknown error");
+    }
+  }
+
+  async function handleClear() {
+    if (!window.confirm("Are you sure you want to reset the database? This will clear all transactions and reset CASHpilot AI back to its initial onboarding state.")) {
+      return;
+    }
+    setClearing(true);
+    setError(null);
+    setResult(null);
+    setClearMsg(null);
+    try {
+      const res = await clearDemoData();
+      setClearMsg(res.message || "All data cleared successfully. Database is now in initial clean state.");
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Failed to clear database");
+    } finally {
+      setClearing(false);
     }
   }
 
@@ -91,37 +114,89 @@ function DemoTab() {
             missing payments, amount mismatches, in-transit settlements, and unmatched bank credits.
           </div>
 
-          <button
-            id="load-demo-btn"
-            onClick={handleLoad}
-            disabled={loadState === "loading"}
-            className={`
-              w-full py-3.5 px-6 rounded-2xl font-bold text-xs sm:text-sm transition-all duration-200
-              flex items-center justify-center gap-2.5 shadow-xs cursor-pointer
-              ${loadState === "loading"
-                ? "bg-slate-200 text-slate-500 cursor-not-allowed border border-slate-300"
-                : "bg-[#0C5ADB] hover:bg-[#0944A8] text-white shadow-sm hover:shadow active:scale-[0.99]"
-              }
-            `}
-          >
-            {loadState === "loading" ? (
-              <>
-                <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
-                </svg>
-                <span>Loading Demo Data…</span>
-              </>
-            ) : (
-              <>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
-                </svg>
-                <span>Load Demo Merchant Data</span>
-              </>
-            )}
-          </button>
+          <div className="flex flex-col sm:flex-row items-center gap-3">
+            <button
+              id="load-demo-btn"
+              onClick={handleLoad}
+              disabled={loadState === "loading" || clearing}
+              className={`
+                flex-1 w-full py-3.5 px-6 rounded-2xl font-bold text-xs sm:text-sm transition-all duration-200
+                flex items-center justify-center gap-2.5 shadow-xs cursor-pointer
+                ${loadState === "loading" || clearing
+                  ? "bg-slate-200 text-slate-500 cursor-not-allowed border border-slate-300"
+                  : "bg-[#0C5ADB] hover:bg-[#0944A8] text-white shadow-sm hover:shadow active:scale-[0.99]"
+                }
+              `}
+            >
+              {loadState === "loading" ? (
+                <>
+                  <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
+                  </svg>
+                  <span>Loading Demo Data…</span>
+                </>
+              ) : (
+                <>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                  </svg>
+                  <span>Load Demo Merchant Data</span>
+                </>
+              )}
+            </button>
+
+            <button
+              id="clear-demo-btn"
+              onClick={handleClear}
+              disabled={loadState === "loading" || clearing}
+              className={`
+                w-full sm:w-auto py-3.5 px-6 rounded-2xl font-bold text-xs sm:text-sm transition-all duration-200
+                flex items-center justify-center gap-2 border shadow-xs cursor-pointer
+                ${clearing
+                  ? "bg-slate-100 text-slate-400 border-slate-200 cursor-not-allowed"
+                  : "bg-white text-slate-700 hover:text-rose-600 border-slate-200 hover:border-rose-300 hover:bg-rose-50/50 active:scale-[0.99]"
+                }
+              `}
+            >
+              {clearing ? (
+                <>
+                  <svg className="animate-spin w-4 h-4 text-slate-500" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
+                  </svg>
+                  <span>Resetting…</span>
+                </>
+              ) : (
+                <>
+                  <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                  </svg>
+                  <span>Clear / Reset Data</span>
+                </>
+              )}
+            </button>
+          </div>
+
+          {clearMsg && (
+            <div className="mt-4 p-4 rounded-2xl bg-amber-50 border border-amber-200 text-xs sm:text-sm text-amber-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+              <div className="flex items-center gap-2">
+                <span>🗑️</span>
+                <span>{clearMsg}</span>
+              </div>
+              <Link href="/" className="font-bold text-[#0C5ADB] hover:underline shrink-0">
+                View Welcome Onboarding Screen →
+              </Link>
+            </div>
+          )}
+
+          {error && (
+            <div className="mt-4 p-4 rounded-2xl bg-rose-50 border border-rose-200 text-xs sm:text-sm text-rose-800">
+              {error}
+            </div>
+          )}
         </div>
+
 
         {/* Result panel */}
         {loadState === "success" && result && (
