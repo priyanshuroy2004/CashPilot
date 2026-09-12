@@ -6,7 +6,8 @@ persists structured results to PostgreSQL, and computes summary statistics.
 """
 
 from datetime import datetime
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
+
 
 from sqlalchemy.orm import Session
 
