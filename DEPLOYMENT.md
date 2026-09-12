@@ -8,13 +8,13 @@ Deploy CASHpilot AI to production in **under 5 minutes** for **100% free** using
 
 ```text
 ┌────────────────────────────────────────────────────────┐
-│               Frontend: Vercel (Free)                  │
-│       https://your-cashpilot-app.vercel.app            │
+│               Frontend: Vercel                         │
+│       https://cash-pilot-three.vercel.app              │
 └───────────────────────────┬────────────────────────────┘
                             │ NEXT_PUBLIC_API_URL
 ┌───────────────────────────▼────────────────────────────┐
-│            Backend: Render Web Service (Free)          │
-│       https://cashpilot-backend.onrender.com           │
+│            Backend: Render Web Service                 │
+│       https://cashpilot-backend-j3d9.onrender.com      │
 └───────────────────────────┬────────────────────────────┘
                             │ DATABASE_URL
 ┌───────────────────────────▼────────────────────────────┐
@@ -59,16 +59,16 @@ Vercel is the creator of Next.js and provides instant deployment with a global e
    * **Root Directory**: Click **Edit** $\to$ select **`frontend`** *(CRITICAL: do not leave at root!)*
 5. Under **Environment Variables**, add:
    * **Key**: `NEXT_PUBLIC_API_URL`
-   * **Value**: Your Render Backend URL from Part 1 (e.g., `https://cashpilot-backend-xxxx.onrender.com` — *no trailing slash*)
+   * **Value**: `https://cashpilot-backend-j3d9.onrender.com`
 6. Click **Deploy**.
-7. In ~60 seconds, your site will be live at `https://cashpilot-xxxx.vercel.app`!
+7. In ~60 seconds, your site will be live at `https://cash-pilot-three.vercel.app`!
 
 ---
 
 ## 📥 Part 3: Load Initial Demo Data into the Cloud Database
 
 Once your live site is up:
-1. Open your live Vercel URL in your browser: `https://cashpilot-xxxx.vercel.app`.
+1. Open your live Vercel URL in your browser: `https://cash-pilot-three.vercel.app`.
 2. In the left navigation sidebar, click **Data Import** (`/data`).
 3. Click the button: **"Load Demo Merchant Data"**.
 4. The system will ingest all 1,000 synthetic merchant orders, payments, settlements, and bank credits into your cloud PostgreSQL database.

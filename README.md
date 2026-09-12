@@ -19,7 +19,7 @@
 | **Backend API** | ![Live](https://img.shields.io/badge/Status-Live-00B574?style=flat-square) | [https://cashpilot-backend-j3d9.onrender.com](https://cashpilot-backend-j3d9.onrender.com) |
 | **API Docs (Swagger)** | ![Interactive](https://img.shields.io/badge/Docs-Swagger%20UI-0C5ADB?style=flat-square) | [https://cashpilot-backend-j3d9.onrender.com/docs](https://cashpilot-backend-j3d9.onrender.com/docs) |
 | **API Health Check** | ![Health](https://img.shields.io/badge/Health-200%20OK-00B574?style=flat-square) | [https://cashpilot-backend-j3d9.onrender.com/api/health](https://cashpilot-backend-j3d9.onrender.com/api/health) |
-| **Frontend Web App** | ![Vercel](https://img.shields.io/badge/Vercel-Hosted-black?style=flat-square&logo=vercel) | *Deployed via Vercel* |
+| **Frontend Web App** | ![Live](https://img.shields.io/badge/Status-Live-00B574?style=flat-square) | [https://cash-pilot-three.vercel.app](https://cash-pilot-three.vercel.app) |
 
 
 ---
@@ -170,7 +170,7 @@ CASHpilot AI is deployed on cloud infrastructure:
   * Base API: [`https://cashpilot-backend-j3d9.onrender.com`](https://cashpilot-backend-j3d9.onrender.com)
   * Interactive Swagger Docs: [`https://cashpilot-backend-j3d9.onrender.com/docs`](https://cashpilot-backend-j3d9.onrender.com/docs)
   * Health Endpoint: [`https://cashpilot-backend-j3d9.onrender.com/api/health`](https://cashpilot-backend-j3d9.onrender.com/api/health)
-* **Frontend UI**: Hosted on **Vercel** with global edge network.
+* **Frontend UI**: Hosted on **Vercel** with global edge network: [`https://cash-pilot-three.vercel.app`](https://cash-pilot-three.vercel.app)
 
 👉 **See the complete step-by-step [Production Deployment Guide](DEPLOYMENT.md).**
 
