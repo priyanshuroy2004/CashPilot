@@ -1,0 +1,31 @@
+refund_id,payment_id,order_id,amount,currency,status,refund_date,settlement_id,reason
+REF-2A-001,pay_ejcy127h6gmd47,ORD-10001,150000,INR,processed,2024-12-10 10:00:00,SETL-9001,Customer requested return
+REF-2A-002,pay_zx25qbrmqg1ved,ORD-10002,79750,INR,processed,2024-12-10 11:00:00,SETL-9001,Damaged product
+REF-2A-003,pay_rnu8c0s41kssvi,ORD-10050,111700,INR,processed,2024-12-11 09:00:00,SETL-9002,Wrong item delivered
+REF-2A-004,pay_w56fkps0dxme4p,ORD-10070,141230,INR,processed,2024-12-12 08:00:00,SETL-9003,Product not as described
+REF-2A-005,pay_tgv44ftj5ccasb,ORD-10010,198670,INR,processed,2024-12-13 14:00:00,SETL-9001,Quality issue
+REF-2A-006,pay_9zn9i9h0dxho87,ORD-10051,211700,INR,processed,2024-12-13 15:00:00,SETL-9002,Cancelled order
+REF-2A-007,pay_83y0224wk0yehv,ORD-10011,38060,INR,processed,2024-12-14 10:00:00,SETL-9001,Duplicate payment
+REF-2A-008,pay_774rzgyd49pso1,ORD-10012,13040,INR,processed,2024-12-15 11:00:00,SETL-9001,Overcharged
+REF-2A-009,pay_yur4sor8wm9lbb,ORD-10052,107800,INR,processed,2024-12-15 12:00:00,SETL-9002,Service not rendered
+REF-2A-010,pay_1kfk7y6qxdsgv6,ORD-10055,35800,INR,processed,2024-12-16 09:00:00,SETL-9002,Product defective
+REF-2A-011,pay_qnezw9heyce4qg,ORD-10013,12220,INR,pending,2024-12-17 10:00:00,,Awaiting approval
+REF-2A-012,pay_2pnjka34mqa78r,ORD-10056,85800,INR,pending,2024-12-17 11:00:00,,Customer dispute open
+REF-2A-013,pay_twyam1n0lh9p89,ORD-10057,73100,INR,pending,2024-12-18 09:00:00,,Investigation in progress
+REF-2A-014,pay_12v2tg5pizx3hc,ORD-10014,35600,INR,processed,2024-12-19 08:00:00,SETL-9001,Exchange accepted
+REF-2A-015,pay_2hhihxs58yreg2,ORD-10015,42430,INR,processed,2024-12-19 10:00:00,SETL-9001,Shipping delay
+REF-2A-016,pay_qkwqh5k2y77z69,ORD-10058,489500,INR,processed,2024-12-20 08:00:00,SETL-9002,Large order cancelled
+REF-2A-017,pay_tzjko0mtglhug0,ORD-10059,211900,INR,processed,2024-12-20 10:00:00,SETL-9002,Partial refund issued
+REF-2A-018,pay_7b1ijiys2n75bx,ORD-10016,44550,INR,processed,2024-12-21 09:00:00,SETL-9001,Wrong size
+REF-2A-019,pay_9q2l48c1cqg433,ORD-10060,278200,INR,processed,2024-12-21 11:00:00,SETL-9002,Subscription cancelled
+REF-2A-020,pay_ejcy127h6gmd47,ORD-10001,150000,INR,processed,2024-12-21 14:00:00,SETL-9001,Duplicate refund - same as REF-2A-001
+REF-2A-021,pay_zx25qbrmqg1ved,ORD-10002,79750,INR,processed,2024-12-22 10:00:00,SETL-9001,Duplicate refund - same as REF-2A-002
+REF-2A-022,pay_rnu8c0s41kssvi,ORD-10050,111700,INR,processed,2024-12-22 11:00:00,SETL-9002,Duplicate refund - same as REF-2A-003
+REF-2A-023,pay_w56fkps0dxme4p,ORD-10070,200000,INR,processed,2024-12-23 09:00:00,SETL-9003,Amount mismatch - ledger shows 141230
+REF-2A-024,pay_tgv44ftj5ccasb,ORD-10010,250000,INR,processed,2024-12-23 11:00:00,SETL-9001,Amount mismatch - ledger shows 198670
+REF-2A-025,pay_7b1ijiys2n75bx,ORD-10016,44550,INR,processed,2024-12-24 10:00:00,SETL-9001,Missing ledger - refund not recorded
+REF-2A-026,pay_9q2l48c1cqg433,ORD-10060,278200,INR,processed,2024-12-24 11:00:00,SETL-9002,Missing ledger - refund not recorded
+REF-2A-027,pay_qnezw9heyce4qg,ORD-10013,12220,INR,processed,2024-12-25 09:00:00,SETL-9001,Missing settlement adjustment
+REF-2A-028,pay_2hhihxs58yreg2,ORD-10015,42430,INR,processed,2024-12-25 11:00:00,SETL-9001,Settlement adjustment missing
+REF-2A-029,pay_12v2tg5pizx3hc,ORD-10014,35600,INR,processed,2024-12-26 09:00:00,SETL-9001,Correctly matched refund
+REF-2A-030,pay_774rzgyd49pso1,ORD-10012,13040,INR,processed,2024-12-26 10:00:00,SETL-9001,Correctly matched refund

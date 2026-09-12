@@ -17,6 +17,11 @@ DATABASE_URL = os.getenv(
 if DATABASE_URL and DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
+# Ensure SSL mode is requested for external cloud database URLs (e.g. Render external hostnames)
+if DATABASE_URL and "render.com" in DATABASE_URL and "sslmode" not in DATABASE_URL:
+    DATABASE_URL += ("&" if "?" in DATABASE_URL else "?") + "sslmode=require"
+
+
 engine = create_engine(
     DATABASE_URL,
     pool_pre_ping=True,         # verify connections before checkout

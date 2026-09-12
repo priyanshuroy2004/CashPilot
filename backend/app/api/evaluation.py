@@ -209,6 +209,14 @@ def get_evaluation_metrics(db: Session = Depends(get_db)) -> Dict[str, Any]:
                 "Ground truth data is loaded from data/demo/ground_truth.csv for evaluation only. "
                 "It is NEVER used in production reconciliation, forecasting, or exception detection logic."
             ),
-            "available": os.path.exists("data/demo/ground_truth.csv"),
+            "available": any(
+                os.path.exists(p)
+                for p in [
+                    "data/ground_truth/ground_truth.csv",
+                    "data/demo/ground_truth.csv",
+                    "../data/ground_truth/ground_truth.csv",
+                    os.path.join(os.path.dirname(__file__), "..", "..", "data", "ground_truth", "ground_truth.csv"),
+                ]
+            ),
         },
     }

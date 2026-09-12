@@ -43,18 +43,25 @@ from app.models.models import (
 
 # Resolve data directory relative to this file
 # loader.py lives at: backend/app/services/data_ingestion/loader.py
-# Project root is 4 levels up: data_ingestion/ → services/ → app/ → backend/ → <project_root>
 _HERE = os.path.dirname(os.path.abspath(__file__))
+_BACKEND_ROOT = os.path.abspath(os.path.join(_HERE, "..", "..", ".."))
 _PROJECT_ROOT = os.path.abspath(os.path.join(_HERE, "..", "..", "..", ".."))
 DATA_DIR = os.path.join(_PROJECT_ROOT, "data", "demo")
 
 
-
 def _csv_path(filename: str) -> str:
-    path = os.path.join(DATA_DIR, filename)
-    if not os.path.exists(path):
-        raise FileNotFoundError(path)
-    return path
+    """Resolve demo CSV filename across local backend and monorepo root paths."""
+    candidates = [
+        os.path.join(_BACKEND_ROOT, "data", "demo", filename),
+        os.path.join(DATA_DIR, filename),
+        os.path.join(os.getcwd(), "data", "demo", filename),
+        os.path.join(os.getcwd(), "..", "data", "demo", filename),
+    ]
+    for path in candidates:
+        if os.path.exists(path):
+            return path
+    raise FileNotFoundError(f"Could not locate '{filename}' in any candidate paths: {candidates}")
+
 
 
 def _parse_dt(value: str) -> datetime:
